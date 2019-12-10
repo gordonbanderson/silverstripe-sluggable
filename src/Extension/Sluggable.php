@@ -34,6 +34,8 @@ class Sluggable extends DataExtension
     {
         parent::onBeforeWrite();
 
+        error_log('++ IN SLUGGABLE ++');
+
         /** @var Config_ForClass $config */
         $config = $this->owner->config();
 
