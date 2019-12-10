@@ -51,6 +51,7 @@ class SluggableObjectTest extends SapphireTest
 
     private function getSlugFromDataObject($title)
     {
+        error_log('INCOMING TITLE: ' . $title);
         $object = new SluggestTestObject();
         $object->DisplayName = $title;
         $object->write();
