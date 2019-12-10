@@ -7,6 +7,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Kernel;
 use SilverStripe\Core\Startup\ScheduledFlushDiscoverer;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\ORM\DataObject;
 use Suilven\Sluggable\Extension\Sluggable;
 use Suilven\Sluggable\Helper\SluggableHelper;
 use Suilven\Sluggable\Tests\Model\SluggestTestObject;
@@ -56,6 +57,8 @@ class SluggableObjectTest extends SapphireTest
         $object = new SluggestTestObject();
         $object->DisplayName = $displayName;
         $object->write();
+        error_log('ID: ' . $object->ID);
+        $object = DataObject::get_by_id(SluggestTestObject::class, $object->ID);
         $slug = $object->Slug;
         error_log('SLUGGING: ' . $displayName . '--> ' . $slug);
         return $slug;
