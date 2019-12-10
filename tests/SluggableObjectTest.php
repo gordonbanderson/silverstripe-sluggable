@@ -31,6 +31,7 @@ class SluggableObjectTest extends SapphireTest
 
     public function testLowerCase()
     {
+        error_log('RUNNING LOWER CASE TEST');
         $this->assertEquals('this-is-lower-case', $this->getSlugFromDataObject('this is lower case'));
     }
 
@@ -49,14 +50,14 @@ class SluggableObjectTest extends SapphireTest
         $this->assertEquals('', $this->getSlugFromDataObject(''));
     }
 
-    private function getSlugFromDataObject($title)
+    private function getSlugFromDataObject($displayName)
     {
-        error_log('INCOMING TITLE: ' . $title);
+        error_log('INCOMING TITLE: ' . $displayName);
         $object = new SluggestTestObject();
-        $object->DisplayName = $title;
+        $object->DisplayName = $displayName;
         $object->write();
         $slug = $object->Slug;
-        error_log('SLUGGING: ' . $title . '--> ' . $slug);
+        error_log('SLUGGING: ' . $displayName . '--> ' . $slug);
         return $slug;
     }
 }
