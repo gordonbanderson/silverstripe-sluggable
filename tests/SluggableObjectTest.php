@@ -54,6 +54,8 @@ class SluggableObjectTest extends SapphireTest
         $object = new SluggestTestObject();
         $object->DisplayName = $title;
         $object->write();
-        return $object->Slug;
+        $slug = $object->Slug;
+        error_log('SLUGGING: ' . $title . '--> ' . $slug);
+        return $slug;
     }
 }
